@@ -1,0 +1,30 @@
+{
+  "name": "rocm-dev",
+  // https://containers.dev/implementors/json_reference/
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "GPU_ARCH": "gfx1100",
+      "USERNAME": "wesley",
+      "USER_ID": "1001", // id -u $USER
+      "GROUP_ID":"1001" , // id -g $USER
+      "VIDEO_GID": "44", // getent group video | cut -d: -f3
+      "RENDER_GID": "110", // getent group render | cut -d: -f3
+      "TZ": "Asia/Taipei" // cat /etc/timezone
+    }
+  },
+  "runArgs": [
+    "--rm",
+    "--name=rocm-dev",
+    "--device=/dev/kfd",
+    "--device=/dev/kfd",
+    "--device=/dev/dri",
+    "--security-opt=seccomp=unconfined",
+    "--cap-add=SYS_PTRACE",
+    "--ipc=host"
+  ],
+  // "updateContentCommand": "bash .devcontainer/install-nvim.sh",
+  "remoteEnv": { "TERM": "xterm-256color" },
+  "remoteUser": "wesley",
+  "customizations": { }
+}
