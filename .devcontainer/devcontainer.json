@@ -4,13 +4,13 @@
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
-      "GPU_ARCH": "gfx1100",
-      "USERNAME": "wesley",
-      "USER_ID": "1001", // id -u $USER
-      "GROUP_ID":"1001" , // id -g $USER
-      "VIDEO_GID": "44", // getent group video | cut -d: -f3
-      "RENDER_GID": "110", // getent group render | cut -d: -f3
-      "TZ": "Asia/Taipei" // cat /etc/timezone
+      "GPU_ARCH": "gfx1100", // TODO: your amd gpu arch
+      "USERNAME": "wesley",  // TODO: your user name
+      "USER_ID": "1001",     // TODO: id -u $USER
+      "GROUP_ID":"1001" ,    // TODO: id -g $USER
+      "VIDEO_GID": "44",     // TODO: getent group video | cut -d: -f3
+      "RENDER_GID": "110",   // TODO: getent group render | cut -d: -f3
+      "TZ": "Asia/Taipei"    // TODO: cat /etc/timezone
     }
   },
   "runArgs": [
@@ -23,8 +23,7 @@
     "--cap-add=SYS_PTRACE",
     "--ipc=host"
   ],
-  // "updateContentCommand": "bash .devcontainer/install-nvim.sh",
   "remoteEnv": { "TERM": "xterm-256color" },
-  "remoteUser": "wesley",
+  "remoteUser": "wesley", //  TODO: your user name
   "customizations": { }
 }
